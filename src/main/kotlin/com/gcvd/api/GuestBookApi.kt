@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import io.swagger.v3.oas.annotations.tags.Tag
+import jakarta.servlet.http.HttpServletRequest
 import org.springframework.http.ResponseEntity
 
 @Tag(name = "방명록", description = "방명록 관리 API")
@@ -30,7 +31,7 @@ interface GuestBookApi {
             )
         ]
     )
-    fun getGuestBook(): ResponseEntity<List<GuestBookDTO.Output>>
+    fun getGuestBook(request: HttpServletRequest): ResponseEntity<List<GuestBookDTO.Output>>
 
     @Operation(
         summary = "방명록 작성",
@@ -71,5 +72,8 @@ interface GuestBookApi {
         ]
     )
 
-    fun createGuestBook(guestBookDTO: GuestBookDTO.Input): ResponseEntity<GuestBookDTO.Output>
+    fun createGuestBook(
+        request: HttpServletRequest,
+        guestBookDTO: GuestBookDTO.Input
+    ): ResponseEntity<GuestBookDTO.Output>
 }

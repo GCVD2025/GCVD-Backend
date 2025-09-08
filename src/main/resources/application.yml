@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: GCVD2025
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+springdoc:
+  swagger-ui:
+    path: ${SWAGGER_PATH}
+
+  api-docs:
+    path: ${API_DOCS_PATH}
