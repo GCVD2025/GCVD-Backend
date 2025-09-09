@@ -25,19 +25,19 @@ springdoc:
   api-docs:
     path: ${API_DOCS_PATH}
 
-management:
-  endpoints:
-    web:
-      base-path: ${MANAGEMENT_PATH}
-      exposure:
-        include: health,info,beans,conditions,prometheus
-        exclude: threaddump, heapdump
-  endpoint:
-    prometheus:
-      access: unrestricted
-    health:
-      show-details: always
-  metrics:
-    distribution:
-      percentiles:
-        http.server.requests: 0.5, 0.95, 0.99  # P50, P95, P99 직접 계산
+#management:
+#  endpoints:
+#    web:
+#      base-path: ${MANAGEMENT_PATH}
+#      exposure:
+#        include: health,info,beans,conditions,prometheus
+#        exclude: threaddump, heapdump
+#  endpoint:
+#    prometheus:
+#      access: unrestricted
+#    health:
+#      show-details: always
+#  metrics:
+#    distribution:
+#      percentiles:
+#        http.server.requests: 0.5, 0.95, 0.99  # P50, P95, P99 직접 계산
