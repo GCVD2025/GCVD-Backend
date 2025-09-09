@@ -2,8 +2,8 @@
 FROM gradle:8-jdk17 AS build
 WORKDIR /app
 
-# Copy build files
-COPY build.gradle.kts settings.gradle.kts ./
+# Copy gradle configuration files first
+COPY build.gradle settings.gradle ./
 COPY gradle gradle
 COPY gradlew ./
 
@@ -16,22 +16,17 @@ COPY src src
 # Build application
 RUN ./gradlew build --no-daemon -x test
 
-# Runtime stage
-FROM openjdk:17-jre-slim
+# Runtime stage - Eclipse Temurin 사용
+FROM eclipse-temurin:17-jre
 WORKDIR /app
 
 # Create non-root user
 RUN groupadd -r spring && useradd -r -g spring spring
 
-# Copy JAR from build stage
 COPY --from=build /app/build/libs/*.jar app.jar
-
-# Change ownership
 RUN chown spring:spring app.jar
 USER spring
 
-# Expose port
 EXPOSE 8080
 
-# Run application
 ENTRYPOINT ["java", "-jar", "app.jar"]
