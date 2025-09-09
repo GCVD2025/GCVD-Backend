@@ -23,7 +23,7 @@ management:
     web:
       base-path: ${MANAGEMENT_PATH}
       exposure:
-        include: health,info,beans,conditions
+        include: health,info,beans,conditions,prometheus
         exclude: threaddump, heapdump
   endpoint:
     prometheus:
