@@ -14,7 +14,9 @@ class GuestBookService(
     @Transactional(readOnly = true)
     fun getAllGuestBooks(): List<GuestBookDTO.Output> {
         val list = mutableListOf<GuestBookDTO.Output>()
-        guestBookRepository.findAll().forEach { guestBook: GuestBook ->
+        val foundList = guestBookRepository.findAll()
+        foundList.sortBy { guestBook -> guestBook.createdAt }
+        foundList.forEach { guestBook: GuestBook ->
             list += GuestBookDTO.Output(
                 guestBook.author,
                 guestBook.content,
