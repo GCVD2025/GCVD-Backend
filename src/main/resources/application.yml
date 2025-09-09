@@ -10,13 +10,6 @@ spring:
     redis:
       host: ${REDIS_HOST}
       password: ${REDIS_PASSWORD}
-      timeout: 3000ms
-      lettuce:
-        pool:
-          max-active: 5
-          max-idle: 3
-          min-idle: 1
-          max-wait: 3000ms
 
 springdoc:
   swagger-ui:
