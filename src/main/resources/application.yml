@@ -6,17 +6,17 @@ spring:
     hibernate:
       ddl-auto: update
 
-  datasource:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-
-    hikari:
-      minimum-idle: 2          # 최소 2개 커넥션 유지
-      connection-test-query: SELECT 1
-      pool-name: "MainPool"
-      leak-detection-threshold: 30000
-
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      password: ${REDIS_PASSWORD}
+      timeout: 3000ms
+      lettuce:
+        pool:
+          max-active: 5
+          max-idle: 3
+          min-idle: 1
+          max-wait: 3000ms
 
 springdoc:
   swagger-ui:
