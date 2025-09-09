@@ -17,3 +17,16 @@ springdoc:
 
   api-docs:
     path: ${API_DOCS_PATH}
+
+management:
+  endpoints:
+    web:
+      base-path: ${MANAGEMENT_PATH}
+      exposure:
+        include: health,info,beans,conditions
+        exclude: threaddump, heapdump
+  endpoint:
+    prometheus:
+      access: unrestricted
+    health:
+      show-details: always
