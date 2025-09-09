@@ -11,6 +11,13 @@ spring:
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
 
+# application.yml
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.apache.tomcat.util: DEBUG
+
+
 springdoc:
   swagger-ui:
     path: ${SWAGGER_PATH}
