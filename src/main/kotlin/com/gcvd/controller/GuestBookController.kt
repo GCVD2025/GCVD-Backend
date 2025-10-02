@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/guestbook")
+@CrossOrigin(origins = ["*"], allowedHeaders = ["*"])
 class GuestBookController(
     private val guestBookService: GuestBookService,
     private val logger: Logger = LoggerFactory.getLogger(GuestBookController::class.java)
