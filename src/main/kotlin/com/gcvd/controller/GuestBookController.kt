@@ -28,7 +28,7 @@ class GuestBookController(
             val result = guestBookService.getAllGuestBooks()
             val processingTime = System.currentTimeMillis() - startTime
 
-            logger.info("처리 소요 시간: {}ms, IP: {}", processingTime, request.remoteAddr)
+            logger.info("방명록 조회 처리 소요 시간: {}ms, IP: {}", processingTime, request.remoteAddr)
 
             ResponseEntity.ok().body(result)
 
@@ -47,12 +47,17 @@ class GuestBookController(
         @RequestBody @Valid
         guestBookDTO: GuestBookDTO.Input,
     ): ResponseEntity<GuestBookDTO.Output> {
+        val startTime = System.currentTimeMillis()
         logger.info(
             "방명록 작성 요청 - author: '{}', contentLength: {}, IP: {}",
             guestBookDTO.author, guestBookDTO.content.length, request.remoteAddr
         )
         return try {
             val result = guestBookService.createGuestBook(guestBookDTO)
+
+            val processingTime = System.currentTimeMillis() - startTime
+            logger.info("방명록 작성 처리 소요 시간: {}ms, IP: {}", processingTime, request.remoteAddr)
+
             ResponseEntity.ok().body(result)
         } catch (e: Exception) {
             logger.error(
