@@ -12,7 +12,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/guestbook")
+@RequestMapping("/guestbook")
 @CrossOrigin(origins = ["*"], allowedHeaders = ["*"])
 class GuestBookController(
     private val guestBookService: GuestBookService,
