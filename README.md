@@ -9,7 +9,8 @@ GCVD-Backend는 Kotlin 기반으로 개발된 백엔드 애플리케이션입니
 ## 🛠️ 기술 스택
 
 - **Language**: Kotlin
-- **Framework**: Spring Boot (추정)
+- **Framework**: Spring Boot
+- **Database**: Redis
 - **License**: MIT License
 
 ## 🚀 시작하기
